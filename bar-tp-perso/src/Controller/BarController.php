@@ -11,10 +11,31 @@ class BarController extends AbstractController
     /**
      * @Route("/bar", name="bar")
      */
-    public function index(): Response
+    public function home(): Response
     {
         return $this->render('bar/index.html.twig', [
-            'controller_name' => 'BarController',
+            'title' => 'The Bar',
+        ]);
+    }
+
+    /**
+     * @Route("/mentions", name="mentions")
+     */
+    public function mentions(): Response
+    {
+        return $this->render('mentions/index.html.twig', [
+            'title' => 'Mentions',
+        ]);
+    }
+
+
+    /**
+     * @Route("/beers", name="beers")
+     */
+    public function beers(): Response
+    {
+        return $this->render('beers/index.html.twig', [
+            'title' => 'Beers',
         ]);
     }
 }
