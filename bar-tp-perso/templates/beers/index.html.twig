@@ -4,7 +4,21 @@
 
 {% block body %}
 
-<div class="example-wrapper">
+<div class="beers-wrapper mainWrapper">
     <h1>{{ title }}</h1>
+    <div class="row">
+    {% for beerInfo in beers %}
+        {% for beer in beerInfo %}
+            <div class="col-sm-6 beerCard">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>{{ beer.name }}</h5>
+                        <p>Degree: {{ beer.degree }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    </div>
 </div>
 {% endblock %}
