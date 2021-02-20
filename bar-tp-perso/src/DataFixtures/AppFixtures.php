@@ -20,6 +20,8 @@ class AppFixtures extends Fixture
             $beer->setName($faker->name);
             $beer->setDescription($faker->text);
             $beer->setPublishedAt($faker->dateTime('now', 'UTC'));
+            $beer->setPrice(rand(5, 30 ) * 1.12);
+            $beer->setDegree(rand(3, 12 ) * 1.12);
 
             $manager->persist($beer);
         }
