@@ -41,10 +41,13 @@ class BarController extends AbstractController
     /**
      * @Route("/bar", name="bar")
      */
-    public function home(): Response
+    public function home(BeerRepository $beerRepo): Response
     {
+        $lastThreeBeers = $beerRepo->lastThreeBeers();
+
         return $this->render('bar/index.html.twig', [
             'title' => 'The Bar',
+            'data' => $lastThreeBeers,
         ]);
     }
 

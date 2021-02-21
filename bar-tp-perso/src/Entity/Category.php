@@ -29,9 +29,15 @@ class Category
      */
     private $beer_category;
 
+    /**
+     * @ORM\Column(type="string", length=100, options={"default": "normal"})
+     */
+    private $term;
+
     public function __construct()
     {
         $this->beer_category = new ArrayCollection();
+        $this->setTerm('normal');
     }
 
     public function getId(): ?int
@@ -71,6 +77,18 @@ class Category
     public function removeBeerCategory(Beer $beerCategory): self
     {
         $this->beer_category->removeElement($beerCategory);
+
+        return $this;
+    }
+
+    public function getTerm(): ?string
+    {
+        return $this->term;
+    }
+
+    public function setTerm(string $term): self
+    {
+        $this->term = $term;
 
         return $this;
     }
