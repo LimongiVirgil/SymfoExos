@@ -11,6 +11,8 @@ use App\Entity\Beer;
 use App\Entity\Category;
 
 use App\Repository\BeerRepository;
+use App\Repository\CountryRepository;
+use App\Repository\CategoryRepository;
 
 class BarController extends AbstractController
 {
@@ -112,5 +114,26 @@ class BarController extends AbstractController
         $entityManager->flush();
 
         return new Response('Saved categories: ' . $beerCategory);
+    }
+
+    /**
+    * @Route("/beer/{id}", name="beer")
+    */
+    public function showBeer(int $id, BeerRepository $beerRepo, CountryRepository $countryRepo, CategoryRepository $categoryRepo): Response
+    {
+        $beer = $beerRepo->find($id);
+
+        $idCountry = $beer->getCountry()->getId();
+
+        $countryRepo->findOneBy(['id' => $idCountry]);
+
+        $cat = $categoryRepo->findCatSpecial($id);
+
+        //dump($id);
+
+        return $this->render('/beers/beerview.html.twig', [
+            'title' => 'Beers',
+            'beer' => $beer,
+        ]);
     }
 }

@@ -11,7 +11,7 @@
             <div class="col-sm-6 beerCard">
                 <div class="card">
                     <div class="card-body">
-                        <h5>{{ beer.name }}</h5>
+                        <a href="{{ path('beer', { 'id' : beer.id }) }}"><h5>{{ beer.name }}</h5></a>
                         <p>{{ beer.description }}</p>
                     </div>
                 </div>

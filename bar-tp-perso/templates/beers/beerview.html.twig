@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BarController!{% endblock %}
+
+{% block body %}
+
+<div class="beers-wrapper mainWrapper">
+    <h1>{{ title }}</h1>
+    <div class="row">
+      <div class="col-sm-6 beerCard">
+        <div class="card">
+          <div class="card-body">
+            <img src="{{ asset('images/beer.jpeg') }}"alt="beer"/>
+            <h5>{{ beer.name }}</h5>
+            <p>{{ beer.description }}</p>
+            <p>{{ beer.publishedAt | date('Y-m-d') }}</p>
+						<p>{{ beer.price }} €</p>
+						<p>{{ beer.degree }}</p>
+						<p>{{ beer.country.name }}</p>
+    	    </div>
+        </div>
+    	</div>
+    </div>
+</div>
+{% endblock %}
