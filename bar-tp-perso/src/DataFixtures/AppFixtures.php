@@ -75,12 +75,15 @@ class AppFixtures extends Fixture
             //add special category
             $randomCounter = rand(1, count($categoriesSpecialsInst));
             $copiedArray = $categoriesSpecialsInst;
+
             for ($x = $randomCounter; $x > 0; $x--) {
                 $index = rand(0, count($copiedArray) - 1);
                 $beer->addCategory($copiedArray[ $index ]);
+
                 array_splice($copiedArray, $index, 1);
             }
 
+            // add random countries
             switch ($i) {
                 case 0:
                     $beer->setCountry($countriesName[$i]);
