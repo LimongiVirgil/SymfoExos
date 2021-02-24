@@ -11,12 +11,21 @@
         <div class="card">
           <div class="card-body">
             <img src="{{ asset('images/beer.jpeg') }}"alt="beer"/>
-            <h5>{{ beer.name }}</h5>
-            <p>{{ beer.description }}</p>
-            <p>{{ beer.publishedAt | date('Y-m-d') }}</p>
-						<p>{{ beer.price }} €</p>
-						<p>{{ beer.degree }}</p>
-						<p>{{ beer.country.name }}</p>
+            <h5><u>Nom :</u> {{ beer.name }}</h5>
+            <p><u>Description :</u> {{ beer.description }}</p>
+            <p><u>Date :</u> {{ beer.publishedAt | date('Y-m-d') }}</p>
+						<p><u>Prix :</u> {{ beer.price }} €</p>
+						<p><u>Degree :</u> {{ beer.degree }}</p>
+						<p><u>Pays :</u> {{ beer.country.name }}</p>
+            <p><u>Categories :</u></p>
+            <ul>
+              {% for category in catNormal %}
+                <li>{{category.name}}</li>
+              {% endfor %}
+              {% for category in catSpec %}
+                <li>{{category.name}}</li>
+              {% endfor %}
+            </ul>
     	    </div>
         </div>
     	</div>

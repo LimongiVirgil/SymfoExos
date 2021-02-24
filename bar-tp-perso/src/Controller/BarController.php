@@ -130,9 +130,6 @@ class BarController extends AbstractController
         $categoriesSpecial = $categoryRepo->findCatSpecial($id);
         $categoriesNormal = $categoryRepo->findCatNormal($id);
 
-        dump($categoriesSpecial);
-        dump($categoriesNormal);
-
         return $this->render('/beers/beerview.html.twig', [
             'title' => 'Beers',
             'beer' => $beer,
