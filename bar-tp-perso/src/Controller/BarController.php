@@ -137,4 +137,31 @@ class BarController extends AbstractController
             'catNormal' => $categoriesNormal,
         ]);
     }
+
+    /**
+    * @Route("/menu", name="menu")
+    */
+    public function mainMenu(string $category_id, string $routeName, CategoryRepository $categoryRepo): Response
+    {
+
+        $normalTerm = $categoryRepo->findByTerm('normal');
+
+        return $this->render('partials/main_menu.html.twig', [ 
+            'normalCategories' => $normalTerm,
+        ]);
+    }
+
+    /**
+    * @Route("beer_by_category/{categoryName}", name="beer_by_category")
+    */
+    public function showBeersByCategory(string $categoryName, CategoryRepository $categoryRepo): Response 
+    {
+
+        dump($categoryRepo->findBeerByCat($categoryName));
+
+        return $this->render('/beers/index.html.twig', [
+            'title' => 'Beers',
+            'beers' => []
+        ]);
+    }
 }

@@ -55,6 +55,17 @@ class CategoryRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findBeerByCat(string $categoryName)
+    {
+        return $this->createQueryBuilder('c')
+        ->join('c.beer_category', 'b') // raisonner en terme de relation
+        ->where('b.name = :name')
+        ->setParameter('name', $categoryName)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Category[] Returns an array of Category objects
     //  */
