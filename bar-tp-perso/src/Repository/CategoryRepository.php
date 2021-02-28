@@ -59,7 +59,7 @@ class CategoryRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
         ->join('c.beer_category', 'b') // raisonner en terme de relation
-        ->where('b.name = :name')
+        ->where('c.name = :name')
         ->setParameter('name', $categoryName)
         ->getQuery()
         ->getResult()

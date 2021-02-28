@@ -154,14 +154,14 @@ class BarController extends AbstractController
     /**
     * @Route("beer_by_category/{categoryName}", name="beer_by_category")
     */
-    public function showBeersByCategory(string $categoryName, CategoryRepository $categoryRepo): Response 
+    public function showBeersByCategory(string $categoryName, CategoryRepository $categoryRepo, BeerRepository $beerRepo): Response 
     {
 
-        dump($categoryRepo->findBeerByCat($categoryName));
+        $beers = $beerRepo->findBeerByCat($categoryName);
 
         return $this->render('/beers/index.html.twig', [
-            'title' => 'Beers',
-            'beers' => []
+            'title' => 'Beers ' . $categoryName,
+            'beers' => $beers,
         ]);
     }
 }
